@@ -28,7 +28,7 @@ async def 재고입고(ctx, 금액: str):
     )
 
     embed.add_field(
-        name="## 💰 입고 금액",
+        name="💰 입고 금액",
         value=f"**{formatted}**",
         inline=False
     )
