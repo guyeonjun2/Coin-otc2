@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import os
 
-# 인텐트 설정
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -16,7 +15,6 @@ async def on_ready():
 async def 재고입고(ctx, 금액: str):
     cleaned = 금액.replace(",", "")
 
-    # 숫자 체크
     if not cleaned.isdigit():
         return await ctx.send("❌ 숫자만 입력해주세요.\n예: !재고입고 1000000")
 
@@ -24,19 +22,26 @@ async def 재고입고(ctx, 금액: str):
     formatted = format(amount, ",") + "원"
 
     embed = discord.Embed(
-        title="🪙 레제 코인대행 | 재고 입고",
-        description=f"재고가 입고되었습니다!\n\n💵 **{formatted}**",
+        title="# 🪙 레제 코인대행 | 재고 입고",
+        description="## 재고가 입고되었습니다!",
         color=discord.Color.blue()
     )
 
-    # 👇 여기 로고 이미지 URL 넣기
-    embed.set_thumbnail(
+    # 💵 금액 크게 강조
+    embed.add_field(
+        name="## 💰 입고 금액",
+        value=f"## **{formatted}**",
+        inline=False
+    )
+
+    # 🔥 아래 크게 나오는 이미지
+    embed.set_image(
         url="https://cdn.discordapp.com/attachments/1476912108074434581/1477106440106676295/REZE_COIN_OTC.gif?ex=69a38e12&is=69a23c92&hm=8f75d18ba2cd903e18a33c87a9bec674494095ce1dd3b89258714e657605e33b&"
     )
 
+    # 작은 글자 (푸터)
     embed.set_footer(text="REZE OTC | 신속한 대행")
 
     await ctx.send(embed=embed)
 
-# Railway 환경변수 TOKEN 사용
 bot.run(os.getenv("TOKEN"))
