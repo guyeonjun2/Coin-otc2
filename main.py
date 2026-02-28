@@ -23,23 +23,20 @@ async def 재고입고(ctx, 금액: str):
 
     embed = discord.Embed(
         title="🪙 레제 코인대행 | 재고 입고",
-        description="## 재고가 입고되었습니다!",
+        description="재고가 입고되었습니다!",
         color=discord.Color.blue()
     )
 
-    # 💵 금액 크게 강조
     embed.add_field(
         name="💰 입고 금액",
-        value=f"## **{formatted}**",
+        value=f"**{formatted}**",
         inline=False
     )
 
-    # 🔥 아래 크게 나오는 이미지
     embed.set_image(
         url="https://cdn.discordapp.com/attachments/1476912108074434581/1477106440106676295/REZE_COIN_OTC.gif?ex=69a38e12&is=69a23c92&hm=8f75d18ba2cd903e18a33c87a9bec674494095ce1dd3b89258714e657605e33b&"
     )
 
-    # 작은 글자 (푸터)
     embed.set_footer(text="REZE OTC | 신속한 대행")
 
     await ctx.send(embed=embed)
